@@ -1,0 +1,9 @@
+[Totem Plugin]
+	Loader=python
+	Module=awplugin
+	IAge=1
+	Builtin=false
+	Name=Anuweb (Totem web interface)
+	Authors=Daniel Beer <dlbeer@gmail.com>
+	Copyright=Copyright (C) 2013 Daniel Beer <dlbeer@gmail.com>
+	Website=http://www.dlbeer.co.nz/

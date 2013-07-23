@@ -1,0 +1,52 @@
+		      Anuweb - Totem web interface
+
+		     Daniel Beer <dlbeer@gmail.com>
+
+This plugin provides a web interface for Totem which allows you to
+control playback (play, pause, toggle full-screen, seek, etc.) and
+browse for files to play via a web interface.
+
+To install, copy this entire directory to the Totem plugin directory.
+For example:
+
+    sudo cp -r anuweb /usr/lib/totem/plugins
+
+The target path may vary, depending on your system.
+
+To enable the plugin, restart Totem and select "Plugins" from the "Edit"
+menu. You should now see an item labelled "Anuweb (Totem web interface)"
+in the list of available plugins. Make sure the checkbox to the left is
+ticked, and the web interface should be up and running.
+
+By default, the server will run on port 8099, so you should be greeted
+with the Anuweb dashboard if you point your browser at:
+
+    http://<IP address>:8099/
+
+Click the "Configure" button in the plugins dialog to change runtime
+options. Currently available options are:
+
+  * Server port: the port which the web interface will listen on. Ports
+    below 1024 will probably require root access. The default port is
+    8099.
+
+  * Default media path: the default folder to display when the user
+    clicks "Browse" for the first time, or when the user selects "Media
+    home" in the browser. The default is "/".
+
+  * Browser root: change this to restrict the browser to a filesystem
+    subtree (the default, "/", doesn't restrict browsing at all).
+    Browsing outside of the browser root path is not allowed. If you
+    change this, you should make sure that the default media path is a
+    subdirectory of the browser root (otherwise you'll get a "403
+    Forbidden" response when you try to browse).
+
+  * File filter pattern: this is a semicolon-separated list of shell
+    wildcards, used to restrict the set of files which appear in browser
+    listings. This only restricts the listing of such files -- do not
+    rely on it as a means of preventing their access. The default
+    pattern is "*.m??;*.avi;*.og?".
+
+A change to any of these settings takes effect immediately upon pressing
+"Ok". You don't need to restart Totem or the plugin. These settings are
+stored under the GConf path /apps/totem/plugins/anuweb.
