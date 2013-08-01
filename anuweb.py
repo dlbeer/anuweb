@@ -284,7 +284,7 @@ class AnuApp:
 	if mrl is None:
 	    out.append('nothing')
 	else:
-	    out.append(cgi.escape(os.path.basename(mrl)))
+	    out.append(cgi.escape(urllib.unquote(os.path.basename(mrl))))
 	    if self.rpc(self.totem_obj.is_paused):
 		out.append(' (paused)')
 	out.append('<br />')
@@ -415,7 +415,7 @@ class AnuApp:
 	if not self.is_allowed(path):
 	    return forbidden(environ, start_response)
 
-	mrl = 'file://' + path
+	mrl = 'file://' + urllib.quote(path)
 	self.rpc(self.totem_obj.action_remote,
 		 totem.REMOTE_COMMAND_REPLACE, mrl)
 	self.rpc(self.totem_obj.action_remote,
